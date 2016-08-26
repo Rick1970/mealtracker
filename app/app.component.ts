@@ -1,6 +1,7 @@
-import { Component } from 'angular2/core';
+import { Component, EventEmitter } from 'angular2/core';
 import { Food } from './food.model';
 import {FoodListComponent} from './food-list.component';
+import { FoodComponent} from './food.component';
 
 @Component({
   selector: 'my-app',
@@ -8,7 +9,10 @@ import {FoodListComponent} from './food-list.component';
   template: `
     <div class="container">
       <h1>Meal Master Express.</h1>
-      <food-list [foodList]= "foods"></food-list>
+      <food-list
+        [foodList]="foods"
+        (onFoodSelect)="foodWasSelected($event)">
+      </food-list>
     </div>
   `
 })
@@ -23,7 +27,7 @@ export class AppComponent {
 ];
   }
   foodWasSelected(clickedFood: Food): void {
-    console.log(clickedFood);
+    console.log("parent", clickedFood);
   }
 
 }
