@@ -6,12 +6,12 @@ import { Food } from './food.model';
   inputs: ['food'],
   template: `
   <div class="food-form">
-  <h4>Edit Name:</h4>
-  <input [(ngModel)]="food.name"/>
-  <h4>Edit Details:</h4>
-  <input [(ngModel)]="food.details"/>
-  <h4>Edit Calories:</h4>
-  <input [(ngModel)]="food.calories"/>
+  <h3>Edit Name:</h3>
+  <input [(ngModel)]="food.name"  class="input-lg"/>
+  <h3>Edit Details:</h3>
+  <input [(ngModel)]="food.details"  class="input-lg"/>
+  <h3>Edit Calories:</h3>
+  <input [(ngModel)]="food.calories"  class="input-lg"/>
   </div>
   `
 })

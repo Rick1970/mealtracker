@@ -3,6 +3,7 @@ import { Food } from './food.model';
 import { FoodComponent} from './food.component';
 import { EditFoodDetailsComponent } from './edit-food-details.component';
 import { NewFoodComponent } from './new-food.component';
+import { CaloriePipe } from './calorie.pipe';
 
 
 @Component({
@@ -10,11 +11,22 @@ import { NewFoodComponent } from './new-food.component';
   inputs: ['foodList'],
   outputs: ['onFoodSelect'],
   directives: [FoodComponent, EditFoodDetailsComponent, NewFoodComponent],
+  pipes: [CaloriePipe],
   template: `
-
-  <food-display *ngFor="#currentFood of foodList" (click)= "foodClicked(currentFood)" [class.selected]="currentFood === selectedFood"[food]="currentFood"></food-display>
-  <edit-food-details *ngIf="selectedFood" [food]="selectedFood"></edit-food-details>
   <new-food (onSubmitNewFood)="createFood($event)"></new-food>
+  <h2>Here is your food list:</h2>
+
+  <select>
+  <option value="all">Show All</option>
+  <option value="lowCalorie">Show Low Calorie Foods</option>
+  <option value="highCalorie" selected="selected">Show High Calorie Foods</option>
+</select>
+  <h4>Click on food to see details, and edit.</h4>
+  <food-display *ngFor="#currentFood of foodList | calories"
+ (click)= "foodClicked(currentFood)" [class.selected]="currentFood === selectedFood"[food]="currentFood"></food-display>
+
+  <edit-food-details *ngIf="selectedFood" [food]="selectedFood"></edit-food-details>
+
   `
 })
 
@@ -22,6 +34,7 @@ import { NewFoodComponent } from './new-food.component';
 export class FoodListComponent {
   public foodList: Food[];
   public onFoodSelect: EventEmitter<Food>;
+  public threshold:string = "all";
   public selectedFood: Food;
   constructor(){
     this.onFoodSelect = new EventEmitter();
@@ -31,6 +44,10 @@ export class FoodListComponent {
     this.selectedFood = clickedFood;
     this.onFoodSelect.emit(clickedFood)
 
+
+  }
+  onFilterClick(optionFromMenu){
+    this.threshold = optionFromMenu;
   }
   createFood(food): void {
       this.foodList.push(
