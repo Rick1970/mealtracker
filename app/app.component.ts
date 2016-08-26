@@ -9,6 +9,7 @@ import { FoodComponent} from './food.component';
   template: `
     <div class="container">
       <h1>Meal Master Express.</h1>
+      <h3>Click listed item to view details, and edit.</h3>
       <food-list
         [foodList]="foods"
         (onFoodSelect)="foodWasSelected($event)">
