@@ -17,9 +17,9 @@ import { CaloriePipe } from './calorie.pipe';
   <h2>Here is your food list:</h2>
 
   <select (change)="onChange($event.target.value)" class="filter">
-  <option value="all">Show All</option>
+  <option value="all" selected="selected">Show All</option>
   <option value="lowCalorie">Show Low Calorie Items</option>
-  <option value="highCalorie" selected="selected">Show High Calorie Items</option>
+  <option value="highCalorie" >Show High Calorie Items</option>
 </select>
   <h4>Click on food to see details, and edit.</h4>
   <food-display *ngFor="#currentFood of foodList | calories:selectedCompleteness"
