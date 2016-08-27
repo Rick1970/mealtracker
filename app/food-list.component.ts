@@ -16,13 +16,13 @@ import { CaloriePipe } from './calorie.pipe';
   <new-food (onSubmitNewFood)="createFood($event)"></new-food>
   <h2>Here is your food list:</h2>
 
-  <select>
+  <select (change)="onChange($event.target.value)" class="filter">
   <option value="all">Show All</option>
-  <option value="lowCalorie">Show Low Calorie Foods</option>
-  <option value="highCalorie" selected="selected">Show High Calorie Foods</option>
+  <option value="lowCalorie">Show Low Calorie Items</option>
+  <option value="highCalorie" selected="selected">Show High Calorie Items</option>
 </select>
   <h4>Click on food to see details, and edit.</h4>
-  <food-display *ngFor="#currentFood of foodList | calories"
+  <food-display *ngFor="#currentFood of foodList | calories:selectedCompleteness"
  (click)= "foodClicked(currentFood)" [class.selected]="currentFood === selectedFood"[food]="currentFood"></food-display>
 
   <edit-food-details *ngIf="selectedFood" [food]="selectedFood"></edit-food-details>
@@ -34,7 +34,7 @@ import { CaloriePipe } from './calorie.pipe';
 export class FoodListComponent {
   public foodList: Food[];
   public onFoodSelect: EventEmitter<Food>;
-  public threshold:string = "all";
+  public selectedCompleteness: string = "all";
   public selectedFood: Food;
   constructor(){
     this.onFoodSelect = new EventEmitter();
@@ -46,8 +46,9 @@ export class FoodListComponent {
 
 
   }
-  onFilterClick(optionFromMenu){
-    this.threshold = optionFromMenu;
+  onChange(optionFromMenu){
+    this.selectedCompleteness = optionFromMenu;
+    console.log(this.selectedCompleteness);
   }
   createFood(food): void {
       this.foodList.push(

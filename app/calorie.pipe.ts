@@ -7,16 +7,27 @@ import { Food } from './food.model';
 })
 
 export class CaloriePipe implements PipeTransform {
-  transform = function(input: Food[]){
+  transform = function(input: Food[], info){
+    var desiredCalories = info[0];
     var output: Food[] = [];
-
-    for (var i = 0; i < input.length; i++){
-      var digits = parseInt(input[i].calories);
-      if(digits <= 200 ){
-        output.push(input[i]);
+    if(desiredCalories === "lowCalorie"){
+      for (var i = 0; i < input.length; i++){
+        var digits = parseInt(input[i].calories);
+        if(digits <= 200 ){
+          output.push(input[i]);
+        }
       }
+      return output;
+    } else if (desiredCalories === "highCalorie"){
+      for (var i = 0; i < input.length; i++){
+        var digits = parseInt(input[i].calories);
+        if(digits > 200 ){
+          output.push(input[i]);
+        }
+      }
+      return output;
+    }   else {
+      return output;
     }
-    return output;
   }
-
 }
