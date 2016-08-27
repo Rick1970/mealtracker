@@ -13,19 +13,31 @@ import { CaloriePipe } from './calorie.pipe';
   directives: [FoodComponent, EditFoodDetailsComponent, NewFoodComponent],
   pipes: [CaloriePipe],
   template: `
+  <div class="container">
+  <header>
+  <p>Meal Master Express<p>
+  </header>
+  <div class="row">
+  <div class="col-md-4">
   <new-food (onSubmitNewFood)="createFood($event)"></new-food>
-  <h2>Here is your food list:</h2>
-
+  </div>
+  <div class="col-md-4" id="push">
+  <h2 class="cool">Here is your food list:</h2>
   <select (change)="onChange($event.target.value)" class="filter">
   <option value="all" selected="selected">Show All</option>
   <option value="lowCalorie">Show Low Calorie Items</option>
   <option value="highCalorie" >Show High Calorie Items</option>
 </select>
-  <h4>Click on food to see details, and edit.</h4>
+
+  <h4 class="cool">Click on food to see details, and edit.</h4>
   <food-display *ngFor="#currentFood of foodList | calories:selectedCompleteness"
  (click)= "foodClicked(currentFood)" [class.selected]="currentFood === selectedFood"[food]="currentFood"></food-display>
-
+ </div>
+ <div class="col-md-4">
   <edit-food-details *ngIf="selectedFood" [food]="selectedFood"></edit-food-details>
+  </div>
+  </div>
+  </div>
 
   `
 })

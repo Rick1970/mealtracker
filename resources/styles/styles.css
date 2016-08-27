@@ -1,5 +1,15 @@
-h1 {
-  color: blue;
+body {
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('/resources/images/food.jpg');
+}
+
+h1, h2, h3, h4{
+  color: white;
+  font-family: 'Lora', serif;
 }
 
 .selected {
@@ -21,4 +31,34 @@ h1 {
 .filter {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+#push {
+  margin-top: 55px;
+}
+
+header {
+  text-align: center;
+  font-family: 'Great Vibes', cursive;
+  font-size: 120px;
+  padding-top: 50px;
+  margin-bottom: -75px;
+  color: white;
+}
+
+.btn-custom {
+  background-color: hsl(40, 97%, 23%) !important;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fcbf45", endColorstr="#734d01");
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#fcbf45), to(#734d01));
+  background-image: -moz-linear-gradient(top, #fcbf45, #734d01);
+  background-image: -ms-linear-gradient(top, #fcbf45, #734d01);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fcbf45), color-stop(100%, #734d01));
+  background-image: -webkit-linear-gradient(top, #fcbf45, #734d01);
+  background-image: -o-linear-gradient(top, #fcbf45, #734d01);
+  background-image: linear-gradient(#fcbf45, #734d01);
+  border-color: #734d01 #734d01 hsl(40, 97%, 13%);
+  color: #fff !important;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.66);
+  -webkit-font-smoothing: antialiased;
 }

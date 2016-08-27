@@ -14,7 +14,7 @@ import {Food} from './food.model';
   <h4>Enter Calories:</h4>
   <input placeholder="Calories" class="input-lg"#newCalories>
 
-  <button (click)="addFood(newName, newDetails, newCalories)">Add</button>
+  <button class="btn-custom" (click)="addFood(newName, newDetails, newCalories)">Add</button>
 </div>
   `
 })

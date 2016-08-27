@@ -8,12 +8,15 @@ import { FoodComponent} from './food.component';
   directives: [FoodListComponent],
   template: `
     <div class="container">
-      <h1>Meal Master Express.</h1>
+    
+
+
       <food-list
         [foodList]="foods"
         (onFoodSelect)="foodWasSelected($event)">
       </food-list>
-    </div>
+      </div>
+
   `
 })
 export class AppComponent {
