@@ -8,7 +8,7 @@ import { FoodComponent} from './food.component';
   directives: [FoodListComponent],
   template: `
     <div class="container">
-    
+
 
 
       <food-list
@@ -25,7 +25,7 @@ export class AppComponent {
     this.foods = [
   new Food("Whopper", "Burger King food.", "860"),
   new Food("Bacon", "Breakfast.", "300"),
-  new Food("Pizza", "Slice of pizza at lunch", "380"),
+  new Food("Pizza", "Slice of pizza at lunch", "650"),
   new Food("Eggs", "Three eggs with breakfast", "300"),
   new Food("Salsa", "Snack", "50"),
   new Food("Toast", "Breakfast", "100")

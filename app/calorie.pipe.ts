@@ -13,7 +13,7 @@ export class CaloriePipe implements PipeTransform {
     if(desiredCalories === "lowCalorie"){
       for (var i = 0; i < input.length; i++){
         var digits = parseInt(input[i].calories);
-        if(digits <= 200 ){
+        if(digits <= 500 ){
           output.push(input[i]);
         }
       }
@@ -21,7 +21,7 @@ export class CaloriePipe implements PipeTransform {
     } else if (desiredCalories === "highCalorie"){
       for (var i = 0; i < input.length; i++){
         var digits = parseInt(input[i].calories);
-        if(digits > 200 ){
+        if(digits > 500 ){
           output.push(input[i]);
         }
       }
